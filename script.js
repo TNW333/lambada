@@ -61,6 +61,22 @@
   } else {
     revealEls.forEach(function (el) { el.classList.add('in-view'); });
   }
+/* ---------- edição anterior ---------- */
+var pastTrack = document.getElementById('pastGalleryTrack');
+var pastPrev = document.getElementById('pastGalleryPrev');
+var pastNext = document.getElementById('pastGalleryNext');
+
+if (pastTrack && pastPrev && pastNext) {
+  function scrollByOneSlide(direction) {
+    var slide = pastTrack.querySelector('.carousel-slide');
+    if (!slide) return;
+    var gap = parseFloat(getComputedStyle(pastTrack).gap) || 0;
+    var amount = (slide.offsetWidth + gap) * direction;
+    pastTrack.scrollBy({ left: amount, behavior: 'smooth' });
+  }
+  pastPrev.addEventListener('click', function () { scrollByOneSlide(-1); });
+  pastNext.addEventListener('click', function () { scrollByOneSlide(1); });
+}
 
   /* ---------- gallery lightbox ---------- */
   var galleryItems = Array.prototype.slice.call(document.querySelectorAll('.gallery-item'));

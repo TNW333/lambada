@@ -318,7 +318,7 @@ p{ margin:0; }
 /* =========================================================
    SECTION SHELL / REVEAL
    ========================================================= */
-.section{ position:relative; padding-block:var(--sp-2xl); }
+.section{ position:relative; padding-block: 1rem; }
 .section-head{ max-width:42rem; margin-block-end:var(--sp-lg); }
 .section-head h2{ font-size:clamp(2rem, 3.6vw, 3rem); color:var(--sand-100); margin-block-start:.4rem; }
 .section-sub{ color:var(--sand-muted); font-size:1.05rem; margin-block-start:.9rem; max-width:36rem; }
@@ -412,9 +412,9 @@ p{ margin:0; }
   inset:0;
   width:100%;
   height:100%;
-  object-fit:cover;   /* preenche sem distorcer */
-  z-index:0;           /* fica atrás do ícone/texto, se ainda estiverem lá */
-  border-radius:inherit; /* acompanha o arredondamento da moldura, se houver */
+  object-fit:cover; 
+  z-index:0;       
+  border-radius:inherit; 
 }
 
 .gi-icon{ font-style:normal; font-size:1.6rem; color:var(--gold-700); }
@@ -450,6 +450,64 @@ p{ margin:0; }
 .gi-placeholder--lg.is-hidden{ display:none; }
 .lightbox-nav:hover{ background:rgba(246,239,223,.1); }
 .lightbox-prev{ left:1rem; } .lightbox-next{ right:1rem; }
+
+/* =========================================================
+   GALERIA - EDIÇÃO ANTERIOR (carrossel)
+   ========================================================= */
+.section--past-gallery{ background:var(--ink-900); padding-block-end:calc(var(--sp-2xl) - 0.5rem); }
+
+.carousel{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:1.5rem;
+}
+
+.carousel-track{
+  display:flex;
+  gap:1.2rem;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  padding-block:.5vh;
+  scrollbar-width:none;
+}
+.carousel-track::-webkit-scrollbar{ display:none; }
+
+.carousel-slide{
+  flex:0 0 clamp(220px, 26vw, 320px);
+  aspect-ratio:4/5;
+  margin:0;
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  border:1px solid var(--ink-line);
+  scroll-snap-align:start;
+  background:var(--ink-800);
+}
+.carousel-slide img{
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .5s var(--ease);
+}
+.carousel-slide:hover img{ transform:scale(1.06); }
+
+.carousel-btn{
+  flex-shrink:0;
+  width:48px; height:48px;
+  border-radius:50%;
+  background:var(--ink-800);
+  border:1px solid var(--ink-line);
+  color:var(--sand-100);
+  font-size:1.8rem;
+  line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .25s, border-color .25s, color .25s;
+}
+.carousel-btn:hover{ border-color:var(--gold-500); color:var(--gold-400); }
 
 /* =========================================================
    PROGRAMAÇÃO — TIMELINE
@@ -727,3 +785,6 @@ p{ margin:0; }
   .btn-lg{ width:100%; }
   .hero-actions{ flex-direction:column; }
 }
+.carousel{ gap:.5rem; padding-inline:1rem; }
+.carousel-btn{ width:38px; height:38px; font-size:1.4rem; }
+.carousel-slide{ flex-basis:clamp(180px, 60vw, 240px); }
