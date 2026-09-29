@@ -464,6 +464,13 @@ p{ margin:0; }
   max-width:var(--container);
   margin-inline:auto;
   padding-inline:1.5rem;
+  padding:1rem;
+}
+.carousel-block + .carousel-block{ margin-block-start:var(--sp-lg); }
+.carousel-year{
+  max-width:var(--container); margin-inline:auto; padding-inline:1.5rem;
+  margin-block-end:1rem;
+  font-size:clamp(1.6rem, 3vw, 2.2rem); color:var(--gold-400);
 }
 
 .carousel-track{
@@ -679,7 +686,7 @@ p{ margin:0; }
 .site-footer{ background:var(--ink-900); border-top:1px solid var(--ink-line); padding-block-start:var(--sp-xl); }
 .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:3rem; padding-block-end:2.5rem; }
 .footer-brand p{ margin-block-start:.9rem; color:var(--sand-faint); font-size:.9rem; max-width:20rem; }
-.site-footer h4{ font-family:var(--font-body); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-400); margin-block-end:1.1rem; font-weight:800; }
+.site-footer h4{ font-family:var(--font-body); font-size:.78rem; letter-spacing:.4em; text-transform:uppercase; color:var(--gold-400); margin-block-end:1.1rem; font-weight:500; }
 .footer-nav ul, .footer-social ul{ display:flex; flex-direction:column; gap:.7rem; }
 .footer-nav a{ color:var(--sand-muted); font-size:.92rem; transition:color .25s; }
 .footer-nav a:hover{ color:var(--gold-400); }

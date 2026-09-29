@@ -61,22 +61,22 @@
   } else {
     revealEls.forEach(function (el) { el.classList.add('in-view'); });
   }
-/* ---------- edição anterior ---------- */
-var pastTrack = document.getElementById('pastGalleryTrack');
-var pastPrev = document.getElementById('pastGalleryPrev');
-var pastNext = document.getElementById('pastGalleryNext');
+/* ---------- carrosséis: edições anteriores ---------- */
+document.querySelectorAll('.carousel').forEach(function (carousel) {
+  var track = carousel.querySelector('.carousel-track');
+  var prev = carousel.querySelector('.carousel-btn--prev');
+  var next = carousel.querySelector('.carousel-btn--next');
+  if (!track || !prev || !next) return;
 
-if (pastTrack && pastPrev && pastNext) {
   function scrollByOneSlide(direction) {
-    var slide = pastTrack.querySelector('.carousel-slide');
+    var slide = track.querySelector('.carousel-slide');
     if (!slide) return;
-    var gap = parseFloat(getComputedStyle(pastTrack).gap) || 0;
-    var amount = (slide.offsetWidth + gap) * direction;
-    pastTrack.scrollBy({ left: amount, behavior: 'smooth' });
+    var gap = parseFloat(getComputedStyle(track).gap) || 0;
+    track.scrollBy({ left: (slide.offsetWidth + gap) * direction, behavior: 'smooth' });
   }
-  pastPrev.addEventListener('click', function () { scrollByOneSlide(-1); });
-  pastNext.addEventListener('click', function () { scrollByOneSlide(1); });
-}
+  prev.addEventListener('click', function () { scrollByOneSlide(-1); });
+  next.addEventListener('click', function () { scrollByOneSlide(1); });
+});
 
   /* ---------- gallery lightbox ---------- */
   var galleryItems = Array.prototype.slice.call(document.querySelectorAll('.gallery-item'));
